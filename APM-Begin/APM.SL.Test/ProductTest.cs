@@ -73,7 +73,7 @@ namespace APM.SL.Test
         public void CalculateMargin_WhenValidCostLessThan1_ShouldReturn100()
         {
             // Arrange
-            string cost = ".01";
+            string cost = "0,01";
             string price = "100";
             decimal expected = 100M;
             var product = new Product();
@@ -105,8 +105,8 @@ namespace APM.SL.Test
         public void CalculateMargin_WhenValidSmallValues50PercentOfPrice_ShouldReturn50()
         {
             // Arrange
-            string cost = ".01";
-            string price = ".02";
+            string cost = "0,01";
+            string price = "0,02";
             decimal expected = 50M;
             var product = new Product();
 
@@ -121,7 +121,7 @@ namespace APM.SL.Test
         public void CalculateMargin_WhenValidCostContainsDecimal50PercentOfPrice_ShouldReturn50()
         {
             // Arrange
-            string cost = "49.55";
+            string cost = "49,55";
             string price = "100";
             decimal expected = 50M;
             var product = new Product();
@@ -159,7 +159,7 @@ namespace APM.SL.Test
 
             // Act & Assert
             var ex = Assert.Throws<ArgumentException>(() => product.CalculateMargin(cost, price));
-            Assert.Equal("The price must be a number greater than 0 (Parameter 'price')", ex.Message);
+            Assert.Equal("Price must be a number and it must be bigger than zero. (Parameter 'priceInput')", ex.Message);
         }
 
         [Fact]
@@ -172,7 +172,7 @@ namespace APM.SL.Test
 
             // Act & Assert
             var ex = Assert.Throws<ArgumentException>(() => product.CalculateMargin(cost, price));
-            Assert.Equal("Please enter the price (Parameter 'price')", ex.Message);
+            Assert.Equal("Please enter the price. (Parameter 'priceInput')", ex.Message);
         }
 
         [Fact]
@@ -185,7 +185,7 @@ namespace APM.SL.Test
 
             // Act & Assert
             var ex = Assert.Throws<ArgumentException>(() => product.CalculateMargin(cost, price));
-            Assert.Equal("Please enter the cost (Parameter 'cost')", ex.Message);
+            Assert.Equal("Please enter the cost. (Parameter 'costInput')", ex.Message);
         }
 
         [Fact]
@@ -199,7 +199,7 @@ namespace APM.SL.Test
             // Act & Assert
             var ex = Assert.Throws<ArgumentException>(() =>
                                         product.CalculateMargin(cost, price));
-            Assert.Equal("Please enter the price (Parameter 'price')", ex.Message);
+            Assert.Equal("Please enter the price. (Parameter 'priceInput')", ex.Message);
         }
 
         [Fact]
@@ -213,7 +213,7 @@ namespace APM.SL.Test
             // Act & Assert
             var ex = Assert.Throws<ArgumentException>(() =>
                                         product.CalculateMargin(cost, price));
-            Assert.Equal("Please enter the cost (Parameter 'cost')", ex.Message);
+            Assert.Equal("Please enter the cost. (Parameter 'costInput')", ex.Message);
         }
 
         [Fact]
@@ -226,7 +226,7 @@ namespace APM.SL.Test
 
             // Act & Assert
             var ex = Assert.Throws<ArgumentException>(() => product.CalculateMargin(cost, price));
-            Assert.Equal("The price must be a number greater than 0 (Parameter 'price')", ex.Message);
+            Assert.Equal("Price must be a number and it must be bigger than zero. (Parameter 'priceInput')", ex.Message);
         }
 
         [Fact]
@@ -242,7 +242,7 @@ namespace APM.SL.Test
 
             // Assert
             var ex = Assert.Throws<ArgumentException>(act);
-            Assert.Equal("The cost must be a number 0 or greater (Parameter 'cost')", ex.Message);
+            Assert.Equal("Cost must be a number and it must be bigger than zero. (Parameter 'costInput')", ex.Message);
         }
 
         [Fact]
@@ -256,7 +256,7 @@ namespace APM.SL.Test
             // Act & Assert
             var ex = Assert.Throws<ArgumentException>(() =>
                                             product.CalculateMargin(cost, price));
-            Assert.Equal("The cost must be a number 0 or greater (Parameter 'cost')",
+            Assert.Equal("Cost must be a number and it must be bigger than zero. (Parameter 'costInput')",
                           ex.Message);
         }
 
